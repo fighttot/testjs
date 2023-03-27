@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      box-sizing: border-box;
+    }
+
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    h1 {
+      color: white;
+      background: black;
+      margin: 2rem 0 0 0;
+    }
+
+    hr {
+      margin: 2% 0;
+    }
+
+    .container {
+      width: 75%;
+      margin: 1% auto;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      color: white;
+      background: black;
+      margin: 20px auto;
+      position: relative;
+    }
+
+    .box::before {
+      content: "";
+      width: 100px;
+      height: 100px;
+      border: 5px solid yellow;
+      position: absolute;
+      top: 0;
+      left: 100%;
+
+    }
+
+    .box::after {
+      content: "";
+      content: "";
+      width: 100px;
+      height: 100px;
+      border: 5px solid yellow;
+      position: absolute;
+      top: 0;
+      right: 100%;
+    }
+
+    .col {
+      width: 45%;
+      margin: 2.5%;
+      float: left;
+    }
+
+    .col img {
+      width: 100%;
+    }
+
+    .clearFix::after {
+      content: "";
+      clear: both;
+      display: block;
+    }
+
+
+    .bg {
+      height: 300px;
+      position: relative;
+    }
+
+    .bg::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url("https://picsum.photos/1920/1080/?random=10") no-repeat center/cover;
+      z-index: -1;
+
+    }
+
+
+    .box3 {
+      width: 150px;
+      height: 150px;
+      background: url("https://picsum.photos/500/500/?random=13") no-repeat center/cover;
+      margin: auto;
+      position: relative;
+    }
+
+    .box3::before {
+      content: "";
+      width: 150px;
+      height: 150px;
+      position: absolute;
+      top: 0;
+      left: -110%;
+      background: url("https://picsum.photos/150/150/?random=10") no-repeat center/cover;
+      transition: 0.5s;
+    }
+
+    .box3::after {
+      content: "";
+      width: 150px;
+      height: 150px;
+      position: absolute;
+      top: 0;
+      right: -110%;
+      background: url("https://picsum.photos/150/150/?random=14") no-repeat center/cover;
+      transition: 0.5s;
+    }
+
+    .box3:hover::before {
+      left: 110%;
+    }
+
+    .box3:hover::after {
+      right: 110%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>偽元素 ::before ::after</h1>
+    <p>偽元素主要使用於繪圖創作或輔助裝飾，讓主元素有兩個分身來做事情</p>
+    <div class="box">
+      <div class="content">你好</div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <h1>啟動條件與功用特性</h1>
+    <ul style="font-size: 22px;">
+      <li>1.一定要有content:""才會有作用content可以放文字</li>
+      <li>2.建立時是inline級，positiop轉block型。</li>
+      <li>3.結構上，brfore被建立在內容區域的前方，after在後方</li>
+      <li>4.偽元素不能使用在置換元素(replaced element)、ing、input、iframe</li>
+      <li>5.偽元素不能再建立偽元素，例如::before::before 是不行的</li>
+      <li>6.before after定位時依舊遵循後蓋前(after會蓋住before)但可以使用z-index來改變層級</li>
+    </ul>
+  </div>
+
+
+  <hr>
+
+  <div class="container clearFix">
+    <h1>1.當作清除浮動</h1>
+    <div class="col">
+      <img src="https://picsum.photos//200/?random=10">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis consequatur, temporibus impedit debitis ipsum
+        velit nobis, sed nisi suscipit corrupti architecto quos hic iusto. Provident, doloribus architecto! Error, ipsam
+        harum!</p>
+
+    </div>
+    <div class="col">
+      <img src="https://picsum.photos//200/?random=10">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis consequatur, temporibus impedit debitis ipsum
+        velit nobis, sed nisi suscipit corrupti architecto quos hic iusto. Provident, doloribus architecto! Error, ipsam
+        harum!</p>
+
+    </div>
+  </div>
+  <p>
+    厲害女子部隊一致，財富開關我把高興分配鮮花代理所謂，領導提問儀器出租種類調整是由部落格郵件訂單有人現金化學請問，至少沒有法人成果製作一把幫忙每次並不一口，驅動模組長時間訂單苗栗，現代化行為估計，只能相機細節關鍵字過去分為北方第一個建築有的說到注重威脅國產。厲害女子部隊一致，財富開關我把高興分配鮮花代理所謂，領導提問儀器出租種類調整是由部落格郵件訂單有人現金化學請問，至少沒有法人成果製作一把幫忙每次並不一口，驅動模組長時間訂單苗栗，現代化行為估計，只能相機細節關鍵字過去分為北方第一個建築有的說到注重威脅國產。厲害女子部隊一致，財富開關我把高興分配鮮花代理所謂，領導提問儀器出租種類調整是由部落格郵件訂單有人現金化學請問，至少沒有法人成果製作一把幫忙每次並不一口，驅動模組長時間訂單苗栗，現代化行為估計，只能相機細節關鍵字過去分為北方第一個建築有的說到注重威脅國產。
+  </p>
+
+
+
+  <hr>
+
+  <div class="container">
+    <h1>2.當作背景容器使用</h1>
+  </div>
+
+  <div class="container">
+    <div class="bg">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum, impedit! Itaque quibusdam doloribus
+      tempore asperiores! Quam autem est libero sunt neque nam dignissimos maxime consequatur vel provident, harum
+      numquam optio.
+    </div>
+  </div>
+
+  <hr>
+  <div class="container">
+    <h1>3.摸到主體讓分身做事情</h1>
+    <div class="box3"></div>
+  </div>
+</body>
+
+</html>

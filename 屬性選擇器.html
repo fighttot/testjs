@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 30px;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      margin-top: 1rem;
+      margin-bottom: 0;
+    }
+
+    h3 {
+      margin: 15px 0;
+      padding-top: 15px;
+    }
+
+    h4 {
+      margin: 1rem 0;
+    }
+
+    hr {
+      margin: 2rem 0;
+      clear: both;
+    }
+
+    /* :root=元素 根元素 */
+    :root {
+      font-size: 1rem;
+    }
+
+    a[title="google"] {
+      color: green;
+      font-size: 2rem;
+    }
+
+    a[title="yahoo"] {
+      color: gold;
+      font-size: 10rem;
+    }
+
+    /*多屬性*/
+    a[href="https: //www.pchome.com/"][title="pc"] {
+      color: green;
+      font-size: 10rem;
+    }
+
+
+    img[src*="/200/200/"] {
+      border: 10px solid red;
+    }
+
+    img[src^="https://picsum.photos/100/100/"] {
+      border: 10px solid green;
+    }
+
+    img[src$="random=3"] {
+      border: 10px solid blue;
+    }
+
+    /* .case1 */
+    /* a+b => 同層相鄰選擇器 也稱為兄弟選擇器 從a開始但不選他 選擇與a同一層隔壁的b選擇器*/
+    .case1 h2+p {
+      color: red;
+    }
+
+    .case1 p+p {
+      font-size: 30px;
+    }
+
+
+    /* case2 a ~b 從a開始但不選他選擇同層後面符合b的選擇去 全部選取 */
+
+    .case2 h2~p {
+      color: blue;
+    }
+
+    .menu1 li~li {
+      color: gold;
+      font-size: 40px;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      appearance: none;
+      border: 1px solid black;
+      height: 10px;
+      width: 10px;
+      transform: rotate(45deg);
+    }
+
+    input[type="checkbox"]:checked,
+    input[type="radio"]:checked {
+      background-color: goldenrod;
+    }
+
+    #child :first-child {
+      color: red;
+    }
+
+    #child :last-child {
+      color: red;
+    }
+
+    #child_problm :first-child {
+      color: blue;
+    }
+
+    /* 從頭數 */
+    #nth-child :nth-child(3) {
+      color: orange;
+    }
+
+    /* 從結尾往回數 */
+    #nth-child :nth-last-child(1) {
+      color: green;
+    }
+
+    #nth-child2 :nth-child(odd) {
+      color: deeppink;
+      font-size: 1.5rem;
+    }
+
+    #nth-child2 :nth-child(even) {
+      color: deepskyblue;
+      font-size: 2rem;
+    }
+
+    #nth-child3 :nth-child(3n+2) {
+      color: rgb(153, 88, 51);
+      font-size: 4rem;
+    }
+
+
+    #type div:first-of-type {
+      color: red;
+    }
+
+
+    #type p:first-of-type {
+      color: green;
+    }
+
+    #nth-of-type div:nth-of-type(3) {
+      color: red;
+    }
+
+    #nth-of-type div:nth-last-of-type(2) {
+      color: rgb(255, 0, 204);
+    }
+
+    #nth-of-type-2 div:nth-of-type(odd) {
+      color: rgb(0, 255, 238);
+    }
+
+    #nth-of-type-2 p:nth-of-type(even) {
+      color: rgb(195, 0, 255);
+    }
+
+
+
+    .menu2 li:not(.no) {
+      color: blue;
+    }
+
+    #pseudo-element::first-letter {
+      font-size: 5rem;
+      float: left;
+      padding: 0 1rem 1rem 0;
+    }
+
+    #pseudo-element::first-line {
+      color: aquamarine;
+    }
+
+    /* 反白效果時 */
+    #pseudo-element::selection {
+      color: yellow;
+      background: green;
+    }
+
+    input::placeholder {
+      text-align: right;
+      padding-right: 0.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>1.屬性選擇器</h1>
+
+  <h2>單一屬性選擇器</h2>
+  <a href="https://www.google.com/" title="google">google</a>
+  <a href="https://tw.yahoo.com/" title="yahoo">yahoo</a>
+
+  <h2>多屬性選擇器</h2>
+  <a href="https: //www.pchome.com/" title="pc">pc</a>
+
+
+  <h2>[attr*="選取字串"]</h2>
+  <p>img [src*="/200/200/"]</p>
+  <p>選取img元素 其crs屬性包含200/200/字串的目標</p>
+  <img src="https://picsum.photos/200/200/?random=10">
+
+
+
+  <h2>[attr^="選取字串"]</h2>
+  <p>img [src^="https://picsum.photos/100/"]</p>
+  <p>選取img元素 其crs屬性開頭為"https://picsum.photos/100/"字串的目標</p>
+  <img src="https://picsum.photos/100/100/?random=10">
+
+
+  <h2>[attr$="選取字串"]</h2>
+  <p>img [src$="random=3"]</p>
+  <p>選取img元素 其src屬性結尾為"random=3"字串的目標</p>
+  <img src="https://picsum.photos/300/300/?random=3">
+
+  <hr>
+
+  <!-- a+b -->
+
+  <h1>2.同層相鄰選擇器 a+b</h1>
+  <p>選擇a元素開始 同一層關係相鄰的b元素</p>
+  <div class="case1">
+    <h2>aaa</h2>
+    <p>bbbbbbbbbbbbbb</p>
+    <p>bbbbbbbbbbbbbb</p>
+    <p>bbbbbbbbbbbbbb</p>
+    <p>bbbbbbbbbbbbbb</p>
+  </div>
+
+  <hr>
+
+  <!-- a ~ b -->
+  <h1>3.同層全體選擇器 a+b</h1>
+  <p>套用到a元素層級開始之後遇到的同層級的b元素都是目標</p>
+  <div class="case2">
+    <h2>aaa</h2>
+    <p>bbbbbbbbbbbbbb</p>
+    <p>bbbbbbbbbbbbbb</p>
+    <p>bbbbbbbbbbbbbb</p>
+    <p>bbbbbbbbbbbbbb</p>
+  </div>
+
+  <h4>選擇第一個li之後的所有li元素套用樣是</h4>
+
+  <ul class="menu1">
+    <li><a href="#"></a>LISt</li>
+    <li><a href="#"></a>LISt</li>
+    <li><a href="#"></a>LISt</li>
+    <li><a href="#"></a>LISt</li>
+    <li><a href="#"></a>LISt</li>
+  </ul>
+
+  <hr>
+  <h1>4.虛擬類別(偽類)選擇器 :(單冒號)</h1>
+  <p>偽類與結構狀態有關，讓元素在選擇結構或狀態可以賦予樣式，；link、:hover:...</p>
+
+  <h3>:checked</h3>
+  <h4>check</h4>
+  <p>表單勾選 check或radio狀態時套用的樣式</p>
+  <label for="c1">
+    <input id="c1" type="checkbox">code
+  </label>
+  <label for="c2">
+    <input id="c2" type="checkbox">吃飯
+  </label>
+  <label for="c3">
+    <input id="c3" type="checkbox">睡覺
+  </label>
+
+
+  <h4>radio</h4>
+  <p>表單勾選 check或redio狀態時套用的樣式</p>
+  <label for="r1">
+    <input id="r1" type="radio" name="gender">男
+  </label>
+  <label for="r2">
+    <input id="r2" type="radio" name="gender">女
+
+
+    <hr>
+
+    <h2>以位置來或類型來選擇元素</h2>
+    <h3>:first-child，:last-child</h3>
+    <div id="child">
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+    </div>
+
+    <hr>
+
+    <h3>child的問題</h3>
+    <p>:first-child只能是第一個小孩 P，div:first-child並不會選div的第一個小孩</p>
+    <div id="child_problm">
+      <p>jsdflkl;sjdkgj</p>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+
+    </div>
+
+    <hr>
+
+    <h3>nth-child</h3>
+    <p>選擇第n個</p>
+    <div id="nth-child">
+
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+
+    </div>
+
+
+
+
+
+    <hr>
+
+    <h3>nth-child(odd)奇數小孩，nth-child(even)偶數小孩</h3>
+
+    <div id="nth-child2">
+
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+
+    </div>
+
+    <hr>
+
+    <h3>nth-child(XN+n)從第n個小孩開始，一ˊ重複第XN在做一次</h3>
+    <p>例如 2N+3 從第三個開始選擇接著每次第二次再做一次選擇</p>
+    <div id="nth-child3">
+
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+      <div>fdkh;lsdkjfhlkjfdlhk</div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <hr>
+    <h3>first-of-type (選擇同類型中的第一個元素)，last-of-type (選擇同類型中的最後一個元素)</h3>
+    <p>child適合用在單一類型的元素項目做選擇如果混雜許多元素項目就必須用type</p>
+    <div id="type">
+      <div>標題</div>
+      <p>gkdlhkl;fh</p>
+      <div>標題</div>
+      <p>gkdlhkl;fh</p>
+      <div>標題</div>
+      <p>gkdlhkl;fh</p>
+      <div>標題</div>
+      <p>gkdlhkl;fh</p>
+      <div>標題</div>
+      <p>gkdlhkl;fh</p>
+      <div>標題</div>
+      <p>gkdlhkl;fh</p>
+      <div>標題</div>
+      <p>gkdlhkl;fh</p>
+
+    </div>
+
+    <hr>
+    <h3>nth-of-type 選擇同類型中的第n個元素</h3>
+    <p>nth-of-last-type，可以從最後面開始選擇類型的第n個</p>
+    <div id="nth-of-type">
+      <div>標題</div>
+      <p>gkdlhkl;fh</p>
+      <div>標題</div>
+      <p>gkdlhkl;fh</p>
+      <div>標題</div>
+      <p>gkdlhkl;fh</p>
+      <div>標題</div>
+      <p>gkdlhkl;fh</p>
+      <div>標題</div>
+      <p>gkdlhkl;fh</p>
+      <div>標題</div>
+      <p>gkdlhkl;fh</p>
+      <div>標題</div>
+      <p>gkdlhkl;fh</p>
+
+    </div>
+
+
+    <hr>
+    <h3>nth-of-type(odd)選擇同類型的奇數 even選偶數</h3>
+
+    <div id="nth-of-type-2">
+      <div>標題</div>
+      <p>gkdlhkl;fh</p>
+      <div>標題</div>
+      <p>gkdlhkl;fh</p>
+      <div>標題</div>
+      <p>gkdlhkl;fh</p>
+      <div>標題</div>
+      <p>gkdlhkl;fh</p>
+      <div>標題</div>
+      <p>gkdlhkl;fh</p>
+      <div>標題</div>
+      <p>gkdlhkl;fh</p>
+      <div>標題</div>
+      <p>gkdlhkl;fh</p>
+
+    </div>
+
+
+
+
+    <h3>:not</h3>
+    <p>否定掉:not括號中的條件不要選擇他們其他都要</p>
+    <ul class="menu2">
+      <li>fkdjsl;hjl;fdjhl;kj</li>
+      <li>fkdjsl;hjl;fdjhl;kj</li>
+      <li class="no">fkdjsl;hjl;fdjhl;kj</li>
+      <li>fkdjsl;hjl;fdjhl;kj</li>
+      <li>fkdjsl;hjl;fdjhl;kj</li>
+    </ul>
+
+
+    <hr>
+
+    <h1>5.虛擬元素(偽元素) ::雙冒號</h1>
+    <p>偽元素家族很少，::first-letter、first-line、selection、placeholder</p>
+    <p>另外還有兩個最重要的 before after</p>
+
+
+    <h3>::first-letter、first-line、selection</h3>
+    <p id="pseudo-element">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ab possimus quaerat officiis
+      alias tempora quas voluptatum aspernatur corrupti ad id maiores, sit sapiente aperiam magnam harum laudantium
+      ducimus vitae.quas voluptatum aspernatur corrupti ad id maiores, sit sapiente aperiam magnam harum laudantium
+      ducimus vitae</p>
+
+
+
+    <h3>::placeholder 佔位文字</h3>
+    <input type="password" placeholder="jpf">
+</body>
+
+
+
+
+</html>

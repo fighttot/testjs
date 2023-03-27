@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .taichi {
+      width: 1000px;
+      height: 1000px;
+      border-radius: 50%;
+      background-image: linear-gradient(90deg, white 50%, black 50%);
+      /* position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); */
+      box-shadow: 2px 2px 20px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .taichi::before {
+      content: "";
+      width: 50%;
+      height: 50%;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      transform: translate(-50%, -100%);
+      background: white;
+      position: absolute;
+      z-index: 1;
+    }
+
+    .taichi::after {
+      content: "";
+      width: 50%;
+      height: 50%;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      transform: translate(-50%, 0%);
+      background: black;
+      position: absolute;
+    }
+
+    .yinyang {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: black;
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      transform: translate(-50%, 0%);
+      z-index: 2;
+    }
+
+    .yinyang::after {
+      content: "";
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: white;
+      position: absolute;
+      top: 500px;
+    }
+
+
+
+    .abc {
+      animation: abc 45s infinite;
+    }
+
+
+
+    @keyframes abc {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="taichi abc">
+    <div class="yinyang"></div>
+
+  </div>
+</body>
+
+</html>
